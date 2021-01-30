@@ -1,0 +1,22 @@
+<aside class="menu-sidebar d-none d-lg-block" >
+  <div class="logo">
+    <a href="#">
+      <img src="assets/images/logo/logo.jpg" alt="logo" class="img-responsive">
+    </a>
+  </div>
+  <div class="menu-sidebar-content js-scrollbar1">
+    <nav class="navbar-sidebar">
+      <ul class="list-unstyled navbar-list" *ngFor="let item of productCategories;let i=index">
+        <li>
+          <a routerLink="category/{{item.id}}" routerLinkActive="active-link">{{item.categoryName}}</a>
+        </li>
+        <!-- <li>
+          <a href="#">Mouse Pads</a>
+        </li>
+        <li>
+          <a href="#">Luggage Tags</a>
+        </li> -->
+      </ul>
+    </nav>
+  </div>
+</aside>

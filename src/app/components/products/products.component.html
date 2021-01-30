@@ -1,0 +1,56 @@
+<div class="row" >
+
+  <div  *ngFor="let item of products;let i = index" class="col-md-3">
+    <div class="product-box">
+      <a routerLink="/products/{{item.id}}">
+        <img src="{{item.imageUrl}}" class="img-responsive">
+      </a>
+       <a routerLink="/products/{{item.id}}">
+        <h1>{{item.name}}</h1>
+      </a>
+      <h2>{{item.description}} </h2>
+      <div class="price">{{item.unitPrice | currency:'USD'}}</div>
+      <button (click)="addToCart(item)" class="btn btn-primary btn-sm">Add to cart</button>
+    </div>
+  </div>
+
+  <div class="footer-pagination2">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-holder" style="margin-top: 100px;">
+                <div class="col-md-9" style="margin-top: 20px;">
+
+                    <ngb-pagination [(page)]="thePageNumber"
+                                    [pageSize]="thePageSize"
+                                    [collectionSize]="theTotalElements"
+                                    [maxSize]="5"
+                                    [boundaryLinks]="true"
+                                    (pageChange)="listProducts()">
+
+                    </ngb-pagination>
+
+                </div>
+
+                <div class="col-md-3 mt-2" style="padding-left: 200px;display: flex;width: 200px;">
+                    <span >Page Size</span>
+
+                    <select (change)="updatePageSize($event.target.value)">
+                        <option selected="true">3</option>
+                        <option>5</option>
+                        <option>10</option>
+                        <option>20</option>
+                        <option>50</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+  <div *ngIf="products?.length == 0" class="alert alert-danger col-md-12" role="alert">
+    No products found.
+  </div>
+
+</div>
